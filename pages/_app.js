@@ -57,19 +57,19 @@ function MyApp({ Component, pageProps }) {
           Skip to Content
         </a>
 
-        {isLoading && isHome ? (
+        {isLoading && isHome && (
           <Loader finishLoading={() => setIsLoading(false)} />
-        ) : (
-          <StyledContent>
-            <Nav isHome={isHome} />
-            <Social isHome={isHome} />
-            <Email isHome={isHome} />
-
-            <div id="content">
-              <Component {...pageProps} />
-            </div>
-          </StyledContent>
         )}
+
+        <StyledContent style={isLoading && isHome ? { display: 'none' } : {}}>
+          <Nav isHome={isHome} />
+          <Social isHome={isHome} />
+          <Email isHome={isHome} />
+
+          <div id="content">
+            <Component {...pageProps} />
+          </div>
+        </StyledContent>
       </ThemeProvider>
     </div>
   );

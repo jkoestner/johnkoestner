@@ -27,7 +27,7 @@ const SEO = ({ title, description, image }) => {
   return (
     <Head>
       <title>{fullTitle}</title>
-      <link rel="canonical" href={seo.url} /> # preferred URL
+      <link rel="canonical" href={seo.url} />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
