@@ -1,0 +1,11 @@
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+
+# Build directories
+.next
+out
+.DS_Store
+
+.vscode/
