@@ -32,12 +32,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="description" content="John Koestner - Actuary and Developer" />
           <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
           <link rel="icon" href="/favicon.ico" />
-          <meta property="og:type" content="website" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:creator" content="@jkstreamin" />
         </Head>
         <body>
           <Main />
