@@ -86,6 +86,15 @@ url: 'https://company.com'
 
 The site automatically deploys to GitHub Pages when pushing to the `main` branch via GitHub Actions.
 
+## SEO
+
+- add canonical tag in seo.js
+- CNAME file is updated in public folder
+- github pages custom domain field updated to johnkoestner.com and Enforce HTTPS
+- porkbun dns updated to have correct CNAME
+- forward www to non-www with 301
+- google search to reindex the page
+
 ## License
 
 MIT

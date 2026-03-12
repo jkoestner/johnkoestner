@@ -44,6 +44,34 @@ const SEO = ({ title, description, image }) => {
       <meta name="twitter:title" content={seo.title} key="twitter:title" />
       <meta name="twitter:description" content={seo.description} key="twitter:description" />
       <meta name="twitter:image" content={seo.image} key="twitter:image" />
+
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'John Koestner',
+            url: 'https://johnkoestner.com',
+            jobTitle: 'Director, Life Experience and Assumptions',
+            description: siteMetadata.description,
+            sameAs: [
+              'https://www.linkedin.com/in/jkoestner',
+              'https://github.com/jkoestner',
+              'https://www.facebook.com/dmbymdt',
+              'https://x.com/jkstreamin',
+            ],
+            knowsAbout: [
+              'Life Insurance',
+              'Actuarial Science',
+              'Mortality Modeling',
+              'Data Science',
+              'Python',
+            ],
+          }),
+        }}
+      />
     </Head>
   );
 };

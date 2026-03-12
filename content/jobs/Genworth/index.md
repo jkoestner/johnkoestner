@@ -1,6 +1,6 @@
 ---
 date: '2017-03-01'
-title: 'Director, Life Experience and Assumptions '
+title: 'Director, Life Experience and Assumptions'
 company: 'Genworth'
 location: 'Richmond, VA'
 range: 'March, 2017 - Present'
