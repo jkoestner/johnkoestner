@@ -1,5 +1,5 @@
 module.exports = {
-  email: 'johnkoestner@outlook.com',
+  email: 'john.c.koestner@gmail.com',
 
   socialMedia: [
     {
@@ -11,8 +11,8 @@ module.exports = {
       url: 'https://www.instagram.com/johnkoestner',
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/jkstreamin',
+      name: 'X',
+      url: 'https://x.com/jkstreamin',
     },
     {
       name: 'Linkedin',
