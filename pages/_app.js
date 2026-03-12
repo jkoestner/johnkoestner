@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
-import { Loader, Nav, Social, Email, SEO } from '@components';
+import { Nav, Social, Email, SEO } from '@components';
 import styled from 'styled-components';
 
 const StyledContent = styled.div`
@@ -14,9 +14,7 @@ const StyledContent = styled.div`
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const isHome = router.pathname === '/';
-  const [isLoading, setIsLoading] = useState(isHome);
 
-  // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
     const allLinks = Array.from(document.querySelectorAll('a'));
     if (allLinks.length > 0) {
@@ -30,10 +28,6 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    if (isLoading) {
-      return;
-    }
-
     if (router.asPath.includes('#')) {
       const id = router.asPath.split('#')[1];
       setTimeout(() => {
@@ -46,7 +40,7 @@ function MyApp({ Component, pageProps }) {
     }
 
     handleExternalLinks();
-  }, [isLoading, router.asPath]);
+  }, [router.asPath]);
 
   return (
     <div id="root">
@@ -59,19 +53,15 @@ function MyApp({ Component, pageProps }) {
 
         <SEO />
 
-        {isLoading && isHome ? (
-          <Loader finishLoading={() => setIsLoading(false)} />
-        ) : (
-          <StyledContent>
-            <Nav isHome={isHome} />
-            <Social isHome={isHome} />
-            <Email isHome={isHome} />
+        <StyledContent>
+          <Nav isHome={isHome} />
+          <Social isHome={isHome} />
+          <Email isHome={isHome} />
 
-            <div id="content">
-              <Component {...pageProps} />
-            </div>
-          </StyledContent>
-        )}
+          <div id="content">
+            <Component {...pageProps} />
+          </div>
+        </StyledContent>
       </ThemeProvider>
     </div>
   );
