@@ -1,9 +1,9 @@
 {
-  "name": "jkoestner.github.io",
+  "name": "johnkoestner.com",
   "description": "Personal Website",
   "version": "2.0.0",
-  "author": "John Koestner <johnkoestner@outlook.com>",
-  "homepage": "https://jkoestner.github.io",
+  "author": "John Koestner <john.c.koestner@gmail.com>",
+  "homepage": "https://johnkoestner.com",
   "keywords": [
     "nextjs",
     "portfolio"
