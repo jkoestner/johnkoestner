@@ -8,7 +8,7 @@ const siteMetadata = {
   description: 'John Koestner is an actuary and developer specializing in life insurance and financial applications.',
   siteUrl: 'https://johnkoestner.com',
   image: '/og.png',
-  twitterUsername: '@jkstreamin',
+  xUsername: '@jkstreamin',
 };
 
 const SEO = ({ title, description, image }) => {
@@ -38,12 +38,12 @@ const SEO = ({ title, description, image }) => {
       <meta property="og:image" content={seo.image} key="og:image" />
       <meta property="og:url" content={seo.url} key="og:url" />
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
-      <meta name="twitter:creator" content={siteMetadata.twitterUsername} key="twitter:creator" />
-      <meta name="twitter:title" content={seo.title} key="twitter:title" />
-      <meta name="twitter:description" content={seo.description} key="twitter:description" />
-      <meta name="twitter:image" content={seo.image} key="twitter:image" />
+      {/* X */}
+      <meta name="x:card" content="summary_large_image" key="x:card" />
+      <meta name="x:creator" content={siteMetadata.xUsername} key="x:creator" />
+      <meta name="x:title" content={seo.title} key="x:title" />
+      <meta name="x:description" content={seo.description} key="x:description" />
+      <meta name="x:image" content={seo.image} key="x:image" />
 
       {/* Structured Data */}
       <script
