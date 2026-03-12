@@ -6,7 +6,6 @@ import { SEO } from '@components';
 import { Icon } from '@components/icons';
 import { getFeaturedProjects } from '@lib/markdown';
 
-// Maps URL slug → content folder name
 const projectSlugMap = {
   morai: 'Morai',
   folioflex: 'FolioFlex',
@@ -21,113 +20,110 @@ const imageMap = {
   pensieve: '/images/featured/pensieve.png',
 };
 
-const StyledProjectPage = styled.main`
-  padding: 200px 0 100px;
-
-  @media (max-width: 768px) {
-    padding: 150px 0 80px;
-  }
+const StyledProjectWrapper = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
 `;
 
-const StyledBackLink = styled.div`
-  margin-bottom: 50px;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--green);
-    font-family: var(--font-mono);
-    font-size: var(--fz-sm);
-    text-decoration: none;
-    transition: var(--transition);
-
-    &:hover {
-      gap: 10px;
-    }
-
-    &:after {
-      display: none;
-    }
-  }
-`;
-
-const StyledHero = styled.header`
-  margin-bottom: 50px;
-
-  .project-overline {
-    color: var(--green);
-    font-family: var(--font-mono);
-    font-size: var(--fz-md);
-    font-weight: 400;
-    margin: 0 0 10px;
-  }
+const StyledProjectHeader = styled.header`
+  margin-bottom: 40px;
 
   h1 {
-    color: var(--lightest-slate);
-    font-size: clamp(36px, 7vw, 70px);
-    font-weight: 600;
-    line-height: 1.1;
-    margin: 0 0 20px;
-  }
-
-  .project-links {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
-
-    .cta-button {
-      ${({ theme }) => theme.mixins.smallButton};
-    }
-
-    .icon-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--lightest-slate);
-      font-family: var(--font-mono);
-      font-size: var(--fz-sm);
-      text-decoration: none;
-      transition: var(--transition);
-
-      &:hover {
-        color: var(--green);
-      }
-
-      &:after {
-        display: none;
-      }
-
-      svg {
-        width: 22px;
-        height: 22px;
-      }
-    }
+    margin: 10px 0 0;
   }
 `;
 
-const StyledTechList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0 0;
+const StyledDivider = styled.hr`
+  border: none;
+  border-top: 1px solid var(--lightest-navy);
+  margin: 40px 0;
+`;
 
-  li {
-    font-family: var(--font-mono);
-    font-size: var(--fz-xs);
-    color: var(--green);
-    padding: 5px 12px;
-    border: 1px solid var(--green);
-    border-radius: var(--border-radius);
+const StyledMeta = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .meta-description {
+    color: var(--light-slate);
+    font-size: var(--fz-lg);
+    line-height: 1.7;
+  }
+
+  .meta-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .meta-section {
+    h3 {
+      color: var(--lightest-slate);
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0 0 12px;
+      color: var(--green);
+    }
+  }
+
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--light-slate);
+
+      &:not(:last-child)::after {
+        content: '·';
+        margin-left: 8px;
+        color: var(--dark-slate);
+      }
+    }
+  }
+
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li a {
+      ${({ theme }) => theme.mixins.smallButton};
+      display: inline-block;
+
+      &.github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
   }
 `;
 
 const StyledProjectImage = styled.div`
-  margin: 50px 0;
+  margin-bottom: 80px;
   border-radius: var(--border-radius);
   overflow: hidden;
   ${({ theme }) => theme.mixins.boxShadow};
@@ -136,6 +132,7 @@ const StyledProjectImage = styled.div`
     width: 100%;
     height: auto;
     display: block;
+    border-radius: var(--border-radius);
   }
 `;
 
@@ -143,6 +140,22 @@ const StyledProjectContent = styled.div`
   color: var(--light-slate);
   font-size: var(--fz-lg);
   line-height: 1.7;
+
+  h2 {
+    color: var(--lightest-slate);
+    font-size: var(--fz-xxl);
+    margin: 50px 0 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h3 {
+    color: var(--lightest-slate);
+    font-size: var(--fz-xl);
+    margin: 40px 0 15px;
+  }
 
   p {
     margin: 0 0 20px;
@@ -153,75 +166,108 @@ const StyledProjectContent = styled.div`
   }
 
   ul {
-    padding-left: 20px;
+    padding: 0;
+    margin: 0 0 20px;
+    list-style: none;
 
     li {
-      margin-bottom: 8px;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 10px;
+
+      &:before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--green);
+      }
     }
   }
 `;
 
 export default function ProjectPage({ project, slug }) {
   const { frontmatter, html } = project;
-  const { title, tech, github, external, cta } = frontmatter;
+  const { title, tech, github, external, cta, summary } = frontmatter;
   const imageSrc = imageMap[slug];
-  // Only show live demo if there's a real external URL (not just a GitHub link)
   const liveUrl = cta || (external && !external.includes('github.com') ? external : null);
 
   return (
     <>
       <SEO title={title} />
-      <StyledProjectPage>
-        <StyledBackLink>
-          <Link href="/#projects">← Projects</Link>
-        </StyledBackLink>
 
-        <StyledHero>
-          <p className="project-overline">Featured Project</p>
-          <h1>{title}</h1>
+      <main>
+        <StyledProjectWrapper>
+          <div className="breadcrumb">
+            <span className="arrow">&larr;</span>
+            <Link href="/#projects">Projects</Link>
+          </div>
 
-          {tech && tech.length > 0 && (
-            <StyledTechList>
-              {tech.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </StyledTechList>
+          <StyledProjectHeader>
+            <p className="overline">Featured Project</p>
+            <h1 className="big-heading">{title}</h1>
+          </StyledProjectHeader>
+
+          <StyledDivider />
+
+          <StyledMeta>
+            <div className="meta-description">
+              {summary || html && <span dangerouslySetInnerHTML={{ __html: html }} />}
+            </div>
+
+            <div className="meta-details">
+              {tech && tech.length > 0 && (
+                <div className="meta-section">
+                  <h3>Built with</h3>
+                  <ul className="tech-list">
+                    {tech.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="meta-section">
+                <h3>Links</h3>
+                <ul className="links-list">
+                  {liveUrl && (
+                    <li>
+                      <a href={liveUrl} target="_blank" rel="noopener noreferrer">
+                        Live Demo
+                      </a>
+                    </li>
+                  )}
+                  {github && (
+                    <li>
+                      <a
+                        href={github}
+                        className="github-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon name="GitHub" />
+                        View on GitHub
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          </StyledMeta>
+
+          {imageSrc && (
+            <StyledProjectImage>
+              <Image
+                src={imageSrc}
+                alt={title}
+                width={1200}
+                height={800}
+                priority
+              />
+            </StyledProjectImage>
           )}
 
-          <div className="project-links">
-            {liveUrl && (
-              <a href={liveUrl} className="cta-button" target="_blank" rel="noopener noreferrer">
-                Live Demo
-              </a>
-            )}
-            {github && (
-              <a
-                href={github}
-                className="icon-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Link">
-                <Icon name="GitHub" />
-                GitHub
-              </a>
-            )}
-          </div>
-        </StyledHero>
-
-        {imageSrc && (
-          <StyledProjectImage>
-            <Image
-              src={imageSrc}
-              alt={title}
-              width={1200}
-              height={800}
-              priority
-            />
-          </StyledProjectImage>
-        )}
-
-        <StyledProjectContent dangerouslySetInnerHTML={{ __html: html }} />
-      </StyledProjectPage>
+          <StyledProjectContent dangerouslySetInnerHTML={{ __html: html }} />
+        </StyledProjectWrapper>
+      </main>
     </>
   );
 }
