@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
@@ -345,13 +346,12 @@ const Featured = ({ featured }) => {
                     <p className="project-overline">Featured Project</p>
 
                     <h3 className="project-title">
-                      <a href={external}>{title}</a>
+                      <Link href={`/${project.slug.toLowerCase()}`}>{title}</Link>
                     </h3>
 
-                    <div
-                      className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
-                    />
+                    <div className="project-description">
+                      {frontmatter.summary}
+                    </div>
 
                     {tech.length && (
                       <ul className="project-tech-list">
@@ -382,7 +382,7 @@ const Featured = ({ featured }) => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <Link href={`/${project.slug.toLowerCase()}`}>
                     {cover && imageMap[project.slug] && (
                       <Image
                         src={`/images/featured/${imageMap[project.slug]}`}
@@ -393,7 +393,7 @@ const Featured = ({ featured }) => {
                         priority={i === 0}
                       />
                     )}
-                  </a>
+                  </Link>
                 </div>
               </StyledProject>
             );
