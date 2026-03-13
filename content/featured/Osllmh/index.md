@@ -18,10 +18,9 @@ A wrapper for llama-index and Qdrant to also support a web interface to query th
 
 ## Features
 
-- Feature one
-- Feature two
-- Feature three
+- Knowledge database with vector search
+- Uses embeddings to store and query information
 
 ## Background
 
-Add more detail about the motivation and background of this project here.
+A more personalized collection of artifacts that can be used to query an LLM. Think if you had a collection of books and you wanted to reference a particular concept in the book, this tool can help find the relevant information using RAG.

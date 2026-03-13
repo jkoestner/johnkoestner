@@ -19,9 +19,10 @@ A webscraper that helps to build a number of analytics and insights from externa
 
 ## Features
 
-- Job listing analysis
-- Zillow house analysis
+- Job listing tracking
+- Zillow house tracking
+- Diamond price tracking
 
 ## Background
 
-Add more detail about the motivation and background of this project here.
+Provides a few use cases to track external data. Being able to track job listings can help understand what the market is looking for and what they are paying.

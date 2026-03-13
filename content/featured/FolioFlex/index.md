@@ -17,10 +17,10 @@ A financial dashboard for monitoring portfolios and providing metrics of market 
 
 ## Features
 
-- Feature one
-- Feature two
-- Feature three
+- Portfolio tracking
+- Dashboard with market metrics
+- Budgeting and transaction tracking
 
 ## Background
 
-Add more detail about the motivation and background of this project here.
+Folioflex is a project that helps users track their financial portfolios while keeping up to date on what is happening in the market. The stock market has surprisingly been rooted in best practices for some time, even though there are new tools that are developed annually. Being able to monitor your portfolio while staying up to date on the market provides key information for decision making.
