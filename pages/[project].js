@@ -193,7 +193,7 @@ export default function ProjectPage({ project, slug }) {
 
   return (
     <>
-      <SEO title={title} />
+      <SEO title={title} description={summary} />
 
       <main>
         <StyledProjectWrapper>
